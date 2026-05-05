@@ -122,7 +122,7 @@ x-role: staff
 ```
 
 ## Demo Login Headers
-This starter project uses simple request headers instead of a full login system.
+This project uses simple request headers instead of a full login system.
 
 Student request:
 ```http
