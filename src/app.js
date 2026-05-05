@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -9,6 +10,7 @@ const reservationService = require('./services/reservationService');
 const { attachUser, requireStaff } = require('./middleware/auth');
 const { rateLimiter } = require('./middleware/rateLimiter');
 
+
 const app = express();
 
 app.use(helmet());
@@ -17,6 +19,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(attachUser);
 app.use(rateLimiter({ windowMs: 60 * 1000, maxRequests: 40 }));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/health', (req, res) => {
   res.json({
@@ -91,6 +94,10 @@ app.post('/api/audit/simulate-up', requireStaff, (req, res) => {
     success: true,
     flushed
   });
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 app.use((req, res) => {

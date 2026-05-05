@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<section class="topbar">
+  <div class="brand">
+    <img src="gsw-logo.png" alt="GSW Logo" class="logo" />
+    <div>
+      <p class="tag">Georgia Southwestern State University</p>
+      <h1>Study Room Reservation Lite</h1>
+    </div>
+  </div>
+
+  <div class="campus-pill">Campus Reservation System</div>
+</section>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Room Reservation Lite</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="tag">University Study Space System</p>
+        <h1>Study Room Reservation Lite</h1>
+        <p class="subtitle">Reserve campus study rooms, manage bookings, and keep schedules dependable.</p>
+      </div>
+    </section>
+
+    <section class="card login-card">
+      <h2>Login</h2>
+      <p class="hint">Use any 8-digit student ID. For staff mode, choose Staff.</p>
+
+      <div class="login-grid">
+        <input id="loginId" placeholder="Student ID or Staff ID" value="12345678" />
+        <select id="loginRole">
+          <option value="student">Student</option>
+          <option value="staff">Staff</option>
+        </select>
+        <button id="loginBtn">Login</button>
+      </div>
+
+      <p id="currentUser" class="current-user">Not logged in</p>
+    </section>
+
+    <section class="layout">
+      <div class="card">
+        <h2>Create Reservation</h2>
+
+        <form id="form">
+          <label>Student ID</label>
+          <input id="studentId" placeholder="12345678" required />
+
+          <label>Room</label>
+          <select id="roomId">
+            <option value="R101">R101 - Study Room 101</option>
+            <option value="R102">R102 - Study Room 102</option>
+            <option value="R201">R201 - Study Room 201</option>
+          </select>
+
+          <label>Start Time</label>
+          <input type="datetime-local" id="startTime" required />
+
+          <label>End Time</label>
+          <input type="datetime-local" id="endTime" required />
+
+          <button type="submit">Reserve Room</button>
+        </form>
+
+        <p id="msg"></p>
+      </div>
+
+      <div class="card">
+        <h2>Available Rooms</h2>
+        <div id="rooms" class="list"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-row">
+        <div>
+          <h2>Reservations</h2>
+          <p class="hint">Cancel buttons appear beside each reservation.</p>
+        </div>
+        <button id="refreshBtn" class="small-btn">Refresh</button>
+      </div>
+
+      <div id="reservations" class="reservation-list"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
